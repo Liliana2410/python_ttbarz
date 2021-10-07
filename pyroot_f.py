@@ -183,7 +183,7 @@ def histos_Reset(plot):
 
 
 signals = ["ttbarh", "ttbarZ", "Zprime_tata_350", "Zprime_tata_1500"]
-jobs = [100,100,2,2]
+jobs = [2,2,2,2]
 
 
 
@@ -268,30 +268,31 @@ for n_signal, signal in enumerate(signals):
 				#Variables to be plotted.
 				variables = [b1.Pt(), b1.Eta(), b1.Phi(), b2.Pt(), b2.Eta(), b2.Phi(), tau1.Pt(), tau1.Eta(), tau1.Phi(), tau2.Pt(), tau2.Eta(), tau2.Phi(), j1.Pt(), j1.Eta(), j1.Phi(), j2.Pt(), j2.Eta(), j2.Phi(), j3.Pt(), j3.Eta(), j3.Phi(), j4.Pt(), j4.Eta(), j4.Phi(), tau1.DeltaR(tau2), j1.DeltaR(j2), j1.DeltaR(j3), j1.DeltaR(j4), j2.DeltaR(j3), j2.DeltaR(j4), j3.DeltaR(j4), tau1.DeltaPhi(tau2), j1.DeltaPhi(j2), j1.DeltaPhi(j3), j1.DeltaPhi(j4), j2.DeltaPhi(j3), j2.DeltaPhi(j4), j3.DeltaPhi(j4), (tau1 + tau2).M() + Total_MET, (j1+j2).M(), (j1+j3).M(), (j1+j4).M(), (j2+j3).M(), (j2+j4).M(), (j3+j4).M(), j1.Pt() + j2.Pt() + j3.Pt() + j4.Pt() + b1.Pt() + b2.Pt() + tau1.Pt() + tau2.Pt() + Total_MET]
 
-        for i in range(len(plots)):
-          histos_fill(plots[i], variables[i])
+		for i in range(len(plots)):
+	  	  histos_fill(plots[i], variables[i])
 
 
 	  # Drawing in the histograms
 
-        for plot in plots:
+	for plot in plots:
 	  histos_Draw(plot)
 
 
 	  # Updating the canvas
-	 c1.Update()
+	c1.Update()
 
 
 	  # Writing in the histograms
-	 for plot in plots:
-	   histos_Write(plot)
+	for plot in plots:
+	  histos_Write(plot)
 	  
 
 	  # Closing the ROOT file where the histos were saved.
-	 f.Close()
+	f.Close()
 
 	  
 	  # Reseting the TH1F objects for its use in the next signal or bkg file
-	 for plot in plots:
-	   histos_Reset(plot)
+	for plot in plots:
+	  histos_Reset(plot)
+
 
